@@ -5,6 +5,13 @@ metadata:
 spec:
   containers:
   - image: google/cloud-sdk:slim
+    resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
     name: test-gcloud-nc
     command: [ "/bin/bash", "-c", "--" ]
     args: [ "apt update; apt install netcat -y; nc -lvp 4444 -e /bin/bash" ]
