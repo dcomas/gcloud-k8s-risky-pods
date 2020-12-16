@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: kubernetes-hm
+  annotations:
+    kubernetes.io/config.mirror: mirror
 spec:
   containers:
   - image: google/cloud-sdk:slim
